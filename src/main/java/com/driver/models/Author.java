@@ -3,10 +3,10 @@ package com.driver.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
 public class Author {
 
     @Id
@@ -20,9 +20,9 @@ public class Author {
     private int age;
     private String country;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("author")
-    private List<Book> booksWritten;
+    private List<Book> booksWritten ;
 
     public Author() {
     }
@@ -50,14 +50,6 @@ public class Author {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public int getAge() {
         return age;
     }
@@ -81,5 +73,12 @@ public class Author {
     public void setBooksWritten(List<Book> booksWritten) {
         this.booksWritten = booksWritten;
     }
-}
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}

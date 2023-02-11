@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table
 public class Student {
 
     @Id
@@ -25,6 +24,13 @@ public class Student {
     public Student() {
     }
 
+    public Student(String email, String name, int age, String country) {
+        this.emailId = email;
+        this.name = name;
+        this.age = age;
+        this.country = country;
+    }
+
     // alter table student add foreign key constraint card references Card(id)
 
     @OneToOne
@@ -38,28 +44,6 @@ public class Student {
 
     @UpdateTimestamp
     private Date updatedOn;
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", email='" + emailId + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", country='" + country + '\'' +
-                ", createdOn=" + createdOn +
-                ", updatedOn=" + updatedOn +
-                '}';
-    }
-    // constructor , getter and setter
-
-
-    public Student(String emailId, String name, int age, String country) {
-        this.emailId = emailId;
-        this.name = name;
-        this.age = age;
-        this.country = country;
-    }
 
     public int getId() {
         return id;
@@ -124,4 +108,19 @@ public class Student {
     public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", email='" + emailId + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                ", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +
+                '}';
+    }
+
+
 }
